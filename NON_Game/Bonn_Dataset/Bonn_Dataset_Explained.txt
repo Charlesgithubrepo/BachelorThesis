@@ -1,0 +1,60 @@
+This file contains :
+
+The 5 sets of the Bonn Dataset: SetA, SetB, SetC, SetD, SetE.
+
+The script ( MachineLearningAlgTester.py) was used to decide which algorithm to choose :
+Random Forest Classifier, K-Nearest Neighbour, SVM with RBF kernel, SVM with Linear Kernel.
+
+1. Downloads Dataset from an Online source : https://www.ukbonn.de/epileptologie/arbeitsgruppen/ag-lehnertz-neurophysik/downloads/
+
+2. Data Reading and Preprocessing
+	Loads data from the text files containing EEG signals, segments the text files into ictal (from setE) and non-ictal signals
+	Combines data the segements are concatenated and coresponding labels assigned 1 = ictal 0 = non-ictal
+
+3. Classification Preperation
+	Feature Selection: line length, kurtosis, peak-to-peak amplitude, and skewness are extracted for the classification task.
+	Classifiers and Hyperparameters: Random Forest Classifier, K-Nearest Neighbour, SVM with RBF kernel, are all tested for hyperparameter optimization except SVM with 	Linear Kernel.
+
+4. Cross-Validation and Model Training:
+	Grid Search: A GridSearchCV is employed to find the best hyperparameters for each classifier using Stratified K-Fold cross-validation.
+	Pipeline Construction: A pipeline is created to preprocess the data (feature extraction and standardization) and apply the classifier.
+	Model Fitting: The code fits the best pipeline for each classifier to the data.
+	Prediction and Timing: Prediction is done on the dataset, and the elapsed time for fitting and prediction is recorded.
+
+5.Results Presentation: For each classifier, the code prints out:
+	The name of the algorithm.
+	The best hyperparameters.
+	Cross-validation accuracy.
+	F1 score and overall accuracy.
+	Time taken to fit and predict.
+6. Saves the SVM with Linear Kernel model
+
+The script MachineLearningBonnSVML.py:
+
+1. Load pretrained SVM with Linear Kernel Model from MachineLearningAlgTester.py
+2. Retrieves all txt files from UnseenData folder (created by UnseenDataCreator.py)
+3. Iterate Through Files and Make Predictions:
+	a. For each file in the directory, the script constructs the full file path.
+	b. The data is then loaded from the file and formatted to match the training setup.
+	c. The pre-trained model is used to make a prediction on this data.
+	d. Depending on the prediction, either the ictal or non-ictal counter is incremented, 
+4. Prints to the console indicating the classification result. The number of ictal and non-ictal will always be 50 as the decision was made to keep it that way in the script : UnseenDataCreator.py
+
+TestDataFileIctalCreatorBonnDataset.py & TestDataFileNonIctalCreatorBonnDataset.py
+
+Generate mixed datasets from seperate sets 
+1. Cut loaded data into segments
+2. Replace some of the segments of Set x with segments of Set y.
+	a. Randomly select a segment of Set x 
+	b. Randomly select a segment of Set y
+	c. Replace the selected segment of Set y with the selected segment of Set x
+	d. Remove used segment of Set x from list of potential segments to use.
+3. Combine the modified non-ictal data and remaining ictal data into a new datase
+4. Shuffle the Dataset
+
+Resulting data saved in CreatedIctalTestdata and CreatedNonIctalTestdata
+
+UnseenDataCreator.py
+1. Load n files per folder (CreatedIctalTestdata, CreatedNonIctalTestdata)
+2. Shuffle the selected files 
+3. Load them into Output folder UnseenData
