@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 1
   lifeValue: 1
+  explosionPrefabs: []

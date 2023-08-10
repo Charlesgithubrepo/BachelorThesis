@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  lives: 10
+  lives: 50
   livesContainer: {fileID: 1872645260}
   lifePrefab: {fileID: 4186778294939643292, guid: 7785835a3ec09b3469e477a207a3646a, type: 3}
   scoreText: {fileID: 1475462675}

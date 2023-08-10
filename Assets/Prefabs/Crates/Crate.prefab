@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2614398709253959189}
   - component: {fileID: 1864926014368661602}
   - component: {fileID: 3411383239965166530}
+  - component: {fileID: 7682542630657521577}
   m_Layer: 6
   m_Name: Crate
   m_TagString: Target
@@ -149,3 +150,17 @@ MonoBehaviour:
   pointValue: 1
   lifeValue: 1
   explosionPrefabs: []
+--- !u!114 &7682542630657521577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290627960838035636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330300b240cebf842ada6deb38c3ec73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StreamName: ObjectDestroyed
+  StreamType: Markers

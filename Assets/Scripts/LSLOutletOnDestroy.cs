@@ -13,6 +13,8 @@ namespace LSL4Unity.Samples.SimplePhysicsEvent
         private StreamOutlet outlet;
         private string[] sample = new string[2]; // Modified to include timestamp
         private string objectName;
+        
+
 
         void Start()
         {
@@ -26,10 +28,8 @@ namespace LSL4Unity.Samples.SimplePhysicsEvent
                 channel_format_t.cf_string, hash.ToString());
 
             outlet = new StreamOutlet(streamInfo);
-            objectName = gameObject.name; // We get the name of the current game object for later use
         }
 
-        // This function is called when the MonoBehaviour will be destroyed
         void OnDestroy()
         {
             if (outlet != null)
